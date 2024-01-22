@@ -15,20 +15,23 @@ export function Create() {
     function handleSubmit(e) {
         e.preventDefault();
 
-
-        const ids = uuid();
-        let uniqueId = ids.slice(0, 8);
+        const uniqueId = uuid().slice(0, 8);
 
         let a = name;
         let b = age;
 
-        userList.push({
+        const list = userList.push({
             id: uniqueId,
             name: a,
             age: b,
         });
 
-        history('/');
+        console.log(list);
+
+        setName('');
+        setAge('');
+
+        history("/");
     }
 
     return (
@@ -52,7 +55,7 @@ export function Create() {
                     >
                     </FormControl>
                 </Form.Group>
-                <Button onClick={(e) => handleSubmit} type="submit" >
+                <Button onClick={(e) => handleSubmit(e)} type="submit" >
                     Criar Usuário
                 </Button>
             </Form>

@@ -13,9 +13,10 @@ export function Home() {
     let history = useNavigate();
 
     function handleDelte(e) {
+
         var index = userList.map((e) => {
             return e.id;
-        }).indexOf();
+        }).indexOf(e.id);
 
         userList.splice(index, 1);
 
@@ -24,7 +25,7 @@ export function Home() {
     }
 
     return(
-        <Fragment>
+        <>
             <Header  />
             <div style={{ margin: "10rem"}}>
                 <Table striped bordered hover>
@@ -33,7 +34,7 @@ export function Home() {
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Idade</th>
-                        <th>Teste</th>
+                        
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -46,10 +47,9 @@ export function Home() {
                             return (
                                 <tr>
                                     <td>{item.id}</td>
-                                    
                                     <td>{item.name}</td>
-                                    <td>{item.idade}</td>
-                                    <td>Lúcia aqui não</td>
+                                    <td>{item.age}</td>
+                                    
                                     <td>
                                         <Link to={`/edit`}>
                                         <Button onClick={() => alert(item.id)} variant="primary">Editar</Button>
@@ -69,11 +69,11 @@ export function Home() {
                 <br>
                 </br>
 
-                <Link className="d-grid gap-2" to={"/create"}>
+                <Link  className="d-grid gap-2" to={"/create"}>
                     <Button size="lg">Criar Usuário</Button>
                 </Link>
             </div>
 
-        </Fragment>
+            </>
     )
 }
