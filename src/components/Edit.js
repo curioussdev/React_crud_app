@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
@@ -6,61 +6,64 @@ import { useNavigate } from "react-router-dom";
 import userList from "../api/data";
 import { v4 as uuid } from "uuid";
 
-export function Create() {
+
+export function Edit() {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
+    const [id, setId] = useState('');
 
     let history = useNavigate();
+
+    var index = userList.map((e) => {
+        return e.id;
+    }).indexOf(id);
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        const uniqueId = uuid().slice(0, 4);
+        let a = userList[index];
+        a.name = name;
+        a.age = age;
 
-        let a = name;
-        let b = age;
-
-        const list = userList.push({
-            id: uniqueId,
-            name: a,
-            age: b,
-        });
-
-        console.log(list);
-
-        setName('');
-        setAge('');
         history("/");
     }
 
+    useEffect(() => {
+        setName(localStorage.getItem("name"));
+        setAge(localStorage.getItem("age"));
+        setId(localStorage.getItem("id"));
+     }, [])
+
+
+
     return (
         <div>
-
             <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
                 <Form.Group className="mb-3" controlId="formName" >
-                    <FormControl 
-                        type="text" 
+                    <FormControl
+                        value={name}
+                        type="text"
                         placeholder="Digite seu nome"
-                        required 
-                        onChange={(e) => setName(e.target.value)}    
+                        required
+                        onChange={(e) => setName(e.target.value)}
                     >
                     </FormControl>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formAge" >
-                    <FormControl 
-                        type="text" 
+                    <FormControl
+                        value={age}
+                        type="text"
                         placeholder="Digite sua idade"
-                        required 
-                        onChange={(e) => setAge(e.target.value)}    
+                        required
+                        onChange={(e) => setAge(e.target.value)}
                     >
                     </FormControl>
                 </Form.Group>
                 <Button onClick={(e) => handleSubmit(e)} type="submit" >
-                    Criar Usuário
+                    Actualizar Usuário
                 </Button>
             </Form>
-
         </div>
     )
 }

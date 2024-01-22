@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {  } from "react";
 import { Button, Table } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from "react-router-dom";
@@ -12,17 +12,24 @@ export function Home() {
 
     let history = useNavigate();
 
-    function handleDelte(e) {
+    function handleEdit(id, name, age) {
+        localStorage.setItem("id", id);
+        localStorage.setItem("name", name);
+        localStorage.setItem("age", age); 
+    }
 
+    function handleDelte(e) {
         var index = userList.map((e) => {
             return e.id;
         }).indexOf(e.id);
 
         userList.splice(index, 1);
 
-        history('/')
+        history('/');
 
     }
+
+
 
     return(
         <>
@@ -52,7 +59,7 @@ export function Home() {
                                     
                                     <td>
                                         <Link to={`/edit`}>
-                                        <Button onClick={() => alert(item.id)} variant="primary">Editar</Button>
+                                        <Button onClick={() => handleEdit(item.id, item.name, item.id)} variant="primary">Editar</Button>
                                         </Link>
                                         &nbsp;
                                         <Button onClick={()=> handleDelte(item.id)} variant="danger">Excluir</Button>
