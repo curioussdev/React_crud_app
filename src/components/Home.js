@@ -51,7 +51,9 @@ export function Home() {
                                     <td>{item.idade}</td>
                                     <td>Lúcia aqui não</td>
                                     <td>
+                                        <Link to={`/edit`}>
                                         <Button onClick={() => alert(item.id)} variant="primary">Editar</Button>
+                                        </Link>
                                         &nbsp;
                                         <Button onClick={()=> handleDelte(item.id)} variant="danger">Excluir</Button>
                                     </td>
@@ -64,6 +66,12 @@ export function Home() {
                     }
                 </tbody>
                 </Table>
+                <br>
+                </br>
+
+                <Link className="d-grid gap-2" to={"/create"}>
+                    <Button size="lg">Criar Usuário</Button>
+                </Link>
             </div>
 
         </Fragment>
