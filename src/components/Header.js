@@ -7,7 +7,7 @@ export function Header() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary" style={{background: "#000"}}>
             <Container>
-                <Navbar.Brand href="#home">Menu de Navegação</Navbar.Brand>
+                <Navbar.Brand href="#home">Projecto Crud</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -16,12 +16,12 @@ export function Header() {
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
-                                Another action
+                               Outra Ação
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Alguma coisa</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">
-                                Separated link
+                                Link Separado
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
